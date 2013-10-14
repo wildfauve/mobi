@@ -103,7 +103,6 @@ class Admin::MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-
     respond_with do |format|
       format.html { redirect_to admin_members_url }
       format.json { head :ok }

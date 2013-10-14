@@ -1,6 +1,5 @@
 reg_event = 
   'click' :-> 
-    alert("here")
     #offerurl = window.location.origin + $("#member").attr("data-offersurl");
     offerurl = $("#member").attr("data-offersurl")
     memname = $("#member").attr("data-name")
@@ -11,7 +10,6 @@ reg_event =
 
 de_reg_event = 
   'click' :-> 
-    alert("here")
     window.localStorage.removeItem("memname")
     window.localStorage.removeItem("memcard")
     window.localStorage.removeItem("offerurl")

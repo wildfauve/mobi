@@ -23,9 +23,10 @@ class ApplicationController < ActionController::Base
     end
       
     def current_user
+      Rails.logger.info(">>Application Controller>>current_user: #{session.inspect}")
       if params[:token] && params[:token] == "admin"
         @@current_user ||= User.where(:name => "admin").first
-      else  
+      else
         @current_user ||= User.find(session[:user_id]) if session[:user_id]  
       end
     end
