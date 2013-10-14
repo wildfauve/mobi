@@ -1,0 +1,9 @@
+<li>
+	<%= link_to admin_product_path(product)  do %>
+		<% if !product.product_image.nil? %>
+			<%= image_tag product.product_image.thumb(Mobi::Application.config.thumbsize).url %>
+		<% end %>
+		<h3><%=product.name%></h3>
+		<p><%= product.desc %></p>
+	<% end %>
+</li>

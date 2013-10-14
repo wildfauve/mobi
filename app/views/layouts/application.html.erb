@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <%= stylesheet_link_tag    "application" %>
+   <%= javascript_include_tag "application" %>
+   <%= csrf_meta_tag %>
+</head>
+<body>
+   <div id="page"data-role="page">
+      <div id="user_nav", data-role="header" data-position="fixed">
+         <div id="cust_header">
+            <%= image_tag "bannerlogo.jpg", :id => "banner_logo"%>
+            <h1><%= content_for(:title) %></h1>  
+         </div>
+         <% if @module_name == "Admin" %>
+            <div data-role="navbar">
+                     <ul>
+                        <li><%= link_to "Members", admin_members_path %></li>
+                        <li><%= link_to "Products", admin_products_path %></li>
+                        <li><%= link_to "Stores", admin_stores_path %></li>
+                        <li><%= link_to "Logs", admin_logs_path %></li>                      
+                     </ul>
+            </div><!-- /navbar -->
+         <% end %>
+         <% if @module_name == "Admin" %>
+            <div class="ui-btn-right">
+               <% if current_user %>  
+                  Logged in as <%= current_user.name %>  
+                  <%= link_to "Log out", log_out_path, "data-role" => "button", "data-icon" => "gear" %>  
+               <% else %>  
+                  <%= link_to "Log in", log_in_path, "data-role" => "button", "data-icon" => "gear" %>  
+               <% end %>
+            </div>
+         <% end %>
+      </div>
+         <ul data-role="listview">  
+            <%- flash.each do |name, msg| -%>
+               <li><%= content_tag :div, msg, :railsid => "flash_#{name}" %></li>
+            <% end %>      
+         </ul>
+
+
+      <%= yield %>
+      
+      <div id="user_foot" data-role="footer" data-position="fixed"> 
+         <h3></h3> 
+      </div>
+   </div>
+</body>
+</html>

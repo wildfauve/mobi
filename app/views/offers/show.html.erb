@@ -1,0 +1,25 @@
+<% title "Offer Details" %>
+
+<div data-role="content">
+	<% if !@product.product_image.nil? %>
+		<p>
+			<%= image_tag @product.product_image.thumb(Mobi::Application.config.thumbsize).url %>
+		</p>
+	<% end %>
+
+	<p>
+		<%= @product.name  + " "  + @product.desc %>
+	</p>
+	
+	<div data-role="collapsible" data=collasped="true">
+			<h3>Long Description:</h3>
+			<p><%= @product.long_desc %></p>
+	</div>
+	
+	
+
+
+</div>
+
+<%= link_to 'Load to Fly Buys card', member_offer_path(@member), :method => :put, :confirm => "Offer Loaded", "data-role" => "button", "data-icon" => "plus" %>
+<%= link_to 'Back to Offers', member_offers_path(@member), "data-role" => "button", "data-icon" => "back" %>

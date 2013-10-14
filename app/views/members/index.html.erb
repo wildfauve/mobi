@@ -1,0 +1,19 @@
+<% title "Members" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var offerurl;
+		offerurl = window.localStorage.getItem("offerurl");
+		if (offerurl) {
+			//alert( 'Offer URL!' + offerurl );
+			window.location.replace(offerurl);
+		}
+		else {
+			$('div#membersland')
+			  .html('<p><em>No Local Information Found, try Registering</em></p>');
+		};
+		
+	});	
+</script>
+
+<div id="membersland"></div>
